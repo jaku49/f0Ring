@@ -25,7 +25,7 @@ Built with **Java 21**, the plugin is highly optimized and offers deep customiza
 ## 🎨 Particle Selection GUI
 
 <p align="center">
-  <img src="img/gui_main.jpg" width="800" alt="Particle Selection GUI">
+  <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/javaw_q2zb9qrfRa.png" width="600" alt="Particle Selection GUI">
 </p>
 
 ### Professional Interface
