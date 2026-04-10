@@ -1,59 +1,98 @@
-# 💍 f0Ring | Premium Particle Cosmetics
+<h1 align="center">💍 f0Ring</h1>
 
-![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21-green?style=for-the-badge&logo=minecraft)
-![Java Version](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
-![Author](https://img.shields.io/badge/Author-f0rant-blue?style=for-the-badge)
+<p align="center">
+  Premium Aesthetic Particle Rings for Modern Minecraft Servers
+</p>
 
-**f0Ring** is a high-quality, lightweight cosmetic plugin for Minecraft 1.21 that adds stunning, customizable particle rings under players' feet. Designed with performance and aesthetics in mind, it's the perfect addition for VIP/Premium ranks on your server.
-
----
-
-## ✨ Features
-
-* **Dynamic GUI Menu:** A sleek, 54-slot interface with a gray glass frame and 24 pre-defined ring variants for easy selection.
-* **4 Distinct Particle Styles:**
-    * ⭕ **Circle:** A classic, elegant ring.
-    * ♾️ **Double Ring:** Two intertwined layers of particles.
-    * 🌀 **Helix:** A swirling vortex effect.
-    * ⭐ **Star:** A sharp, five-pointed mystical star.
-* **Advanced Color System:**
-    * **Solid:** Clean, single-color effects.
-    * **Dual:** Two-tone alternating patterns.
-    * **Rainbow:** Dynamic, shifting RGB spectrum.
-* **Full HEX Support:** Complete compatibility with `&#RRGGBB` formats in messages, lores, and even particle colors.
-* **Optimized Performance:** Built using asynchronous tasks to ensure zero impact on server TPS.
-* **Smart Permissions:** Support for multiple permission nodes per effect (e.g., granting access via `f0ring.red` OR `f0ring.vip`).
-* **Auto-Updater:** Integrated asynchronous version checker via GitHub to keep your plugin up to date.
+<p align="center">
+  <img src="https://img.shields.io/badge/Minecraft-1.21-blue.svg" alt="Minecraft 1.21">
+  <img src="https://img.shields.io/badge/Java-21-blue.svg" alt="Java 21">
+  <img src="https://img.shields.io/badge/Platform-Spigot%20%7C%20Paper-blue" alt="Spigot | Paper">
+  <img src="https://img.shields.io/badge/Architecture-Modular-blue" alt="Modular Architecture">
+  <img src="https://img.shields.io/badge/Status-Active%20Development-blue" alt="Active Development">
+</p>
 
 ---
 
-## 📸 Media & Showcase
+## ✨ Overview
 
-> [!TIP]
-> *Add your own screenshots or GIFs here to showcase the effects!*
+**f0Ring** is a high-end cosmetic plugin designed for competitive and hub servers. It allows players to decorate themselves with dynamic, high-performance particle rings that follow their movement in real time.
 
-| Style: Helix (Rainbow) | Style: Star (Solid HEX) |
-| :---: | :---: |
-| ![Placeholder GIF](https://via.placeholder.com/300x200?text=Helix+Preview) | ![Placeholder GIF](https://via.placeholder.com/300x200?text=Star+Preview) |
+Built with **Java 21**, the plugin is highly optimized and offers deep customization through a modular system. It is a great perk for VIP and Premium ranks, making players stand out in the crowd.
 
 ---
 
-## 🛠 Commands & Permissions
+## 🎨 Particle Selection GUI
+
+<p align="center">
+  <img src="img/gui_main.jpg" width="800" alt="Particle Selection GUI">
+</p>
+
+### Professional Interface
+
+The plugin features a large **54-slot GUI** designed for clarity:
+
+- **24 predefined variants** ready to use.
+- **Visual feedback** with gray glass framing and intuitive icons.
+- **One-click activation** to instantly equip or change your style.
+
+---
+
+## 🌀 Particle Styles & Shapes
+
+The plugin uses advanced geometry to render effects in 4 unique styles. Each style is calculated asynchronously to help keep performance high.
+
+| Style | Icon | Description | Visual Impact |
+| :--- | :---: | :--- | :--- |
+| **Circle** | ⭕ | A clean, single-layer ring around the feet. | Minimalist and clean |
+| **Double Ring** | ♾️ | Two intertwined circles at different heights. | Premium and visible |
+| **Helix** | 🌀 | A swirling vortex of particles moving upwards. | Dynamic and energetic |
+| **Star** | ⭐ | A perfect five-pointed mystical star shape. | Unique and prestigious |
+
+---
+
+## 🌈 Advanced Color System
+
+**f0Ring** supports the latest Minecraft features, including full **HEX support** (`&#RRGGBB`) for messages and particles.
+
+### Three Coloring Modes
+
+- **Solid:** A constant, clean color of your choice.
+- **Dual:** Two colors alternating in the pattern for a striped look.
+- **Rainbow:** A smooth, dynamic RGB transition that cycles through colors.
+
+---
+
+## 🏗 Developer Info & Architecture
+
+The project follows a **modular architecture** to ensure maintainability and scalability, making it easy to add new styles or features.
+
+- **Language:** Java 21, using modern features like `records`.
+- **Project structure:**
+  - `manager/`: Core logic and data handling.
+  - `task/`: Asynchronous particle rendering engine.
+  - `model/`: Data objects and Java records.
+  - `util/`: Formatting, HEX parsing, and helper classes.
+- **Built-in updater:** Async version checker via GitHub `version.txt`.
+
+---
+
+## 📋 Commands & Permissions
 
 | Command | Description | Permission |
 | :--- | :--- | :--- |
-| `/f0ring` | Opens the main Ring Selection GUI | `f0ring.use` |
+| `/f0ring` | Opens the main ring selection GUI | `f0ring.use` |
 | `/f0ring reload` | Reloads the configuration file | `f0ring.admin` |
 | `/f0ring alloff` | Disables effects for all online players | `f0ring.admin` |
 
 ---
 
-## ⚙️ Configuration
+## ⚙ Configuration
 
-The plugin is highly customizable. Below is an example snippet of the `config.yml`:
+Fully customizable `config.yml` with support for custom ring definitions:
 
 ```yaml
-# f0Ring Configuration
+# f0Ring Configuration Snippet
 # Support for HEX: &#FFFFFF
 
 settings:
@@ -61,12 +100,55 @@ settings:
   check-updates: true
 
 rings:
-  red_star:
-    display-name: "&#ff0000Star Effect"
+  premium_star:
+    display-name: "&#ff5555&lStar Ring"
     style: STAR
-    color-type: SOLID
-    color-1: "&#ff0000"
+    color-type: RAINBOW
     permissions:
-      - "f0ring.red"
-      - "f0ring.vip"
-    gui-slot: 10
+      - "f0ring.star"
+      - "f0ring.premium"
+    gui-slot: 13
+```
+
+---
+
+## 🚀 Roadmap
+
+### Current Progress
+
+- [x] Core Particle Engine (Circle, Double, Helix, Star)
+- [x] Asynchronous Task Management
+- [x] Java 21 and Minecraft 1.21 Support
+- [x] Full HEX/RGB Support
+- [x] Dynamic 54-slot GUI System
+- [x] Async Version Updater
+
+### Planned Features
+
+- [ ] **Automatically**: Resume after reconnecting to the server, provided the player still has the necessary permissions.
+- [ ] **MySQL/MariaDB Support:** Cross-server synchronization for networks.
+- [ ] **Multi-Ring System:** Ability to stack multiple effects simultaneously.
+- [ ] **Density Toggle:** Command or GUI option to change particle amount for low-end PCs.
+- [ ] **Localization:** Built-in support for Polish (PL) and German (DE).
+- [ ] **Developer API:** Custom events for other plugins to hook into ring changes.
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**.
+
+---
+
+## 📈 Why f0Ring?
+
+- **Competitive performance:** All particle calculations are offloaded from the main server thread.
+- **Premium aesthetics:** Designed to look like a high-end product.
+- **Modern tech stack:** No legacy code, built for the future of Minecraft.
+- **Scalable:** Easy to add new custom rings via simple config entries.
+
+---
+
+<p align="center">
+  Designed for premium Minecraft environments. Created by <b>f0rant (jaku49)</b>.
+</p>
