@@ -42,12 +42,12 @@ The plugin features a large **54-slot GUI** designed for clarity:
 
 The plugin uses advanced geometry to render effects in 4 unique styles. Each style is calculated asynchronously to help keep performance high.
 
-| Style | Icon | Description | Visual Impact |
+| Style | Visualisation | Description | Visual Impact |
 | :--- | :---: | :--- | :--- |
-| **Circle** | ⭕ | A clean, single-layer ring around the feet. | Minimalist and clean |
-| **Double Ring** | ♾️ | Two intertwined circles at different heights. | Premium and visible |
-| **Helix** | 🌀 | A swirling vortex of particles moving upwards. | Dynamic and energetic |
-| **Star** | ⭐ | A perfect five-pointed mystical star shape. | Unique and prestigious |
+| **Circle** | <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/iln4OGg.png" width="75"> | A clean, single-layer ring around the feet. | Minimalist and clean |
+| **Double Ring** | <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/J4g4Pwv.png" width="75"> | Two intertwined circles at different heights. | Premium and visible |
+| **Helix** | <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/5LB6t3X.png" width="75"> | A swirling vortex of particles moving upwards. | Dynamic and energetic |
+| **Star** | <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/MBAzpOc.png" width="75"> | A perfect five-pointed mystical star shape. | Unique and prestigious |
 
 ---
 
