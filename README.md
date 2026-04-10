@@ -81,7 +81,7 @@ The project follows a **modular architecture** to ensure maintainability and sca
 
 | Command | Description | Permission |
 | :--- | :--- | :--- |
-| `/f0ring` | Opens the main ring selection GUI | `f0ring.use` |
+| `/f0ring` or `/ring`| Opens the main ring selection GUI | `f0ring.use` |
 | `/f0ring reload` | Reloads the configuration file | `f0ring.admin` |
 | `/f0ring alloff` | Disables effects for all online players | `f0ring.admin` |
 
