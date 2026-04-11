@@ -1,5 +1,5 @@
 name: f0Ring
-version: 1.0.0
+version: 1.0.1
 main: me.f0rant.f0ring.F0Ring
 api-version: '1.21'
 authors: [f0rant]
@@ -8,3 +8,5 @@ commands:
     description: Opens the ring selection menu.
     usage: /ring
     aliases: [ringo, f0ring]
+    permission: f0ring.use
+    permission-message: "&#FF3333✖ You don't have permission to use this command."
