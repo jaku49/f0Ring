@@ -1,1 +1,1 @@
-1.0.0|https://www.spigotmc.org/resources/f0ring-premium-geometric-particle-cosmetics-1-21-java-21.134208/
+1.0.1|https://www.spigotmc.org/resources/f0ring-premium-geometric-particle-cosmetics-1-21-java-21.134208/
