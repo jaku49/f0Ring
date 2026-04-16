@@ -28,6 +28,12 @@ Built with **Java 21**, the plugin is highly optimized and offers deep customiza
   <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/javaw_q2zb9qrfRa.png" width="600" alt="Particle Selection GUI">
 </p>
 
+## 🎨 Visual Effects
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/img/f0Ring_page-0009.jpg" width="600" alt="Visual Effects">
+</p>
+
 ### Professional Interface
 
 The plugin features a large **54-slot GUI** designed for clarity:
