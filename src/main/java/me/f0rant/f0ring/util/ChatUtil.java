@@ -21,6 +21,14 @@ public class ChatUtil {
         return ChatColor.translateAlternateColorCodes('&', text);
     }
 
+    public static String format(String text, String prefix) {
+        if (text == null) return "";
+        if (prefix != null && text.contains("%prefix%")) {
+            text = text.replace("%prefix%", prefix);
+        }
+        return format(text);
+    }
+
     public static Color hexToColor(String hex) {
         if (hex.startsWith("#")) hex = hex.substring(1);
         try {

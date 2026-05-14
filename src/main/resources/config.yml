@@ -1,310 +1,407 @@
 # ==================================================
-#                  f0Ring Configuration
+#                 f0Ring Configuration
+#          Version: 1.1.0 | Created by jaku49/f0rant
 # ==================================================
-# Full example configuration (complete)
-# Clean layout, categorized, ready for production
+# This file handles all visual aspects of the plugin.
+# Support HEX colors: &#RRGGBB
 # ==================================================
 
+# --------------------------------------------------
+# SYSTEM SETTINGS
+# --------------------------------------------------
 updater:
   enabled: true
   url: "https://raw.githubusercontent.com/jaku49/f0Ring/refs/heads/main/main/version.txt"
+  interval: 30 # Check every 30 minutes
 
+database:
+  type: "MYSQL" # Options: MYSQL, SQLITE
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "minecraft"
+    username: "minecraft"
+    password: "mc123"
+    table: "f0ring_users"
 
-# ==================================================
-# GUI SETTINGS
-# ==================================================
+# --------------------------------------------------
+# GUI APPEARANCE
+# --------------------------------------------------
 gui:
-  title: "&#55FF55&lSelect Your Ringo"
+  title: "&#FFB900&lSelect your Ring"
   border-material: GRAY_STAINED_GLASS_PANE
+  back-button: "&#FF5050&l« Back"
+  equipped-text: "&#50FF50(Currently Active)"
+
+  settings-button:
+    slot: 0
+    material: COMPARATOR
+    name: "&#FFB900&lVisibility Settings"
+    lore:
+      - ""
+      - "&7Adjust your visual experience."
+      - "&8&oClick to manage filters."
+
+  player-info:
+    slot: 4
+    name: "&#FFB900&lYour Profile"
+    lore:
+      - "&8&m--------------------------"
+      - "&7Status: %f0ring_status%"
+      - "&7Active Ring: &f%f0ring_name%"
+      - "&7Shape: &f%f0ring_shape%"
+      - ""
+      - "&7Unlocked: &#FFB900%f0ring_unlocked%&8/&e%f0ring_total%"
+      - "&8&m--------------------------"
+
+  creator-button:
+    slot: 8
+    material: COMMAND_BLOCK
+    name: "&#FF55FF&lCustom Ring Creator"
+    permission: "f0ring.creator"
+    lore:
+      - ""
+      - "&7Design your own unique effect."
+      - "&8&oClick to open editor."
+      - ""
+      - "&8Rank Required: &dCreator"
 
   remove-button:
     slot: 49
     material: BARRIER
-    name: "&#FF3333&lRemove Ringo"
+    name: "&#FF5050&lRemove Effect"
     lore:
-      - "&7Click to remove your current ring."
+      - "&7Clear all active particles."
+      - "&8&oClick to deactivate."
 
   lore-has-permission:
-    - "&8&m------------------------"
+    - "&8&m--------------------------"
     - ""
-    - "&7Shape: &#FFCC00{shape}"
+    - "&7Shape Type: &#FFB900{shape}"
     - ""
-    - "&#33FF33✔ Available"
-    - "&7Click to equip."
-    - ""
-    - "&8&m------------------------"
+    - "&#50FF50✔ Unlocked"
+    - "&eClick to equip this effect."
+    - "&8&m--------------------------"
 
   lore-no-permission:
-    - "&8&m------------------------"
+    - "&8&m--------------------------"
     - ""
-    - "&7Shape: &#FFCC00{shape}"
+    - "&7Shape Type: &#FFB900{shape}"
     - ""
-    - "&#FF3333✖ Locked"
-    - "&7Available in store."
-    - ""
-    - "&8&m------------------------"
+    - "&#FF5050✘ Locked"
+    - "&7Available in our webstore."
+    - "&8&m--------------------------"
 
+settings-gui:
+  title: "&#FFB900&lPreferences"
+  border: BLACK_STAINED_GLASS_PANE
+  status-visible: "&#50FF50Visible"
+  status-hidden: "&#FF5050Hidden"
+  status-enabled: "&#50FF50Enabled"
+  status-disabled: "&#FF5050Disabled"
+  hide-self:
+    slot: 20
+    material: ENDER_EYE
+    name: "&#FFB900&lPersonal View"
+  resume:
+    slot: 22
+    material: CLOCK
+    name: "&#FFB900&lAuto-Resume on Join"
+  hide-others:
+    slot: 24
+    material: SPYGLASS
+    name: "&#FFB900&lOther Players' Rings"
 
-# ==================================================
-# MESSAGES
-# ==================================================
+creator-gui:
+  title: "&#FF55FF&lRing Designer"
+  border: BLACK_STAINED_GLASS_PANE
+  custom-ring-name: "&#FF55FFMy Custom Design"
+  click-chat: "&7Click to enter HEX in chat!"
+  carousel:
+    instructions: "&8» &7Left: &aPrev &8| &7Right: &aNext"
+    selected: "&#50FF50▶ &l{val}"
+    unselected: "&8  {val}"
+  items:
+    shape: { slot: 20, material: SLIME_BALL, name: "&#FFB900Change Shape" }
+    type: { slot: 22, material: PRISMARINE_CRYSTALS, name: "&#FFB900Animation Type" }
+    color1: { slot: 24, material: RED_DYE, name: "&fPrimary Color: &#FFB900{val}" }
+    color2: { slot: 25, material: BLUE_DYE, name: "&fSecondary Color: &#FFB900{val}" }
+    save: { slot: 40, material: EMERALD_BLOCK, name: "&#50FF50&l✔ Save & Equip" }
+
+# --------------------------------------------------
+# LOCALIZATION & MESSAGES
+# --------------------------------------------------
+placeholders:
+  status-on: "&#50FF50Enabled"
+  status-off: "&#FF5050Disabled"
+  no-ring: "&7None"
+  no-shape: "&7Standard"
+
 messages:
-  only-players: "&#FF3333✖ This command is only available for players."
-  usage: "&#FFCC00ℹ Usage: &f/f0ring <reload|alloff>"
-  no-permission: "&#FF3333✖ You don't have permission for this ringo."
-  no-permission-command: "&#FF3333✖ Missing admin permission (f0ring.admin)."
-  ring-equipped: "&#33FF33✔ Ringo equipped successfully."
-  ring-removed: "&#FFCC00ℹ Ringo removed."
-  reload-success: "&#33FF33✔ Configuration reloaded."
-  alloff-success: "&#FFCC00ℹ All effects disabled."
-  update-available: |-
-    &#FF3333[f0Ring] &fNew version available: &#33FF33{version}
-    &fDownload: &#FFCC00{link}
+  prefix: "&#FFB900&lf0Ring &8»"
+  only-players: "%prefix% &#FF5050This command is for players only!"
+  usage: "%prefix% &7Usage: &#FFB900/f0ring <reload|alloff>"
+  no-permission: "%prefix% &#FF5050Insufficient permissions!"
+  no-permission-command: "%prefix% &#FF5050You don't have admin rights!"
+  ring-equipped: "%prefix% &#50FF50Ring equipped successfully!"
+  ring-removed: "%prefix% &7Your ring has been removed."
+  creator-title: "&eEnter HEX Code"
+  creator-sub: "&7Example: #FFB900"
+  creator-success: "%prefix% &aColor updated: &f"
+  creator-error: "%prefix% &#FF5050Invalid format! Use HEX (e.g., #FF0000)"
 
+shape-names:
+  CIRCLE: "Single Circle"
+  DOUBLE_RING: "Double Ring"
+  STAR: "Pentagram Star"
+  HELIX: "Spiraling Helix"
+  WAVE: "Pulsating Wave"
+  HEART: "Heart Aura"
+  DNA: "Double DNA Helix"
+  ORBITALS: "Atomic Orbitals"
 
-# ==================================================
-# RING SYSTEM
-# ==================================================
-# SHAPES: CIRCLE, DOUBLE_RING, STAR, HELIX
-# TYPES: SOLID, DUAL, RAINBOW
-# ==================================================
+# --------------------------------------------------
+# RING DEFINITIONS
+# --------------------------------------------------
 rings:
 
-  # =========================
-  # BASIC (ROW 1)
-  # =========================
+  # --- ROW 1: BASIC COLORS ---
   red:
     slot: 10
     material: RED_DYE
-    name: "&#FF3333&lRed Ringo"
-    permissions: ["f0ring.red","f0ring.vip","f0ring.svip"]
+    name: "&#FF3030&lCrimson Ring"
+    permissions: ["f0ring.red", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#FF0000"
-
   green:
     slot: 11
     material: GREEN_DYE
-    name: "&#33FF33&lGreen Ringo"
-    permissions: ["f0ring.green","f0ring.vip","f0ring.svip"]
+    name: "&#50FF50&lEmerald Ring"
+    permissions: ["f0ring.green", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#00FF00"
-
   blue:
     slot: 12
     material: BLUE_DYE
-    name: "&#3333FF&lBlue Ringo"
-    permissions: ["f0ring.blue","f0ring.vip","f0ring.svip"]
+    name: "&#3030FF&lAzure Ring"
+    permissions: ["f0ring.blue", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#0000FF"
-
   yellow:
     slot: 13
     material: YELLOW_DYE
-    name: "&#FFFF33&lYellow Ringo"
-    permissions: ["f0ring.yellow","f0ring.vip","f0ring.svip"]
+    name: "&#FFFF30&lAmber Ring"
+    permissions: ["f0ring.yellow", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#FFFF00"
-
   purple:
     slot: 14
     material: PURPLE_DYE
-    name: "&#800080&lPurple Ringo"
-    permissions: ["f0ring.purple","f0ring.vip","f0ring.svip"]
+    name: "&#A030FF&lRoyal Purple"
+    permissions: ["f0ring.purple", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#800080"
-
   orange:
     slot: 15
     material: ORANGE_DYE
-    name: "&#FFA500&lOrange Ringo"
-    permissions: ["f0ring.orange","f0ring.vip","f0ring.svip"]
+    name: "&#FF8C30&lSunset Orange"
+    permissions: ["f0ring.orange", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#FFA500"
-
   pink:
     slot: 16
     material: PINK_DYE
-    name: "&#FFC0CB&lPink Ringo"
-    permissions: ["f0ring.pink","f0ring.vip","f0ring.svip"]
+    name: "&#FF69B4&lHot Pink"
+    permissions: ["f0ring.pink", "f0ring.vip"]
     type: SOLID
     shape: CIRCLE
     color1: "#FFC0CB"
 
-
-  # =========================
-  # DOUBLE RINGS (ROW 2)
-  # =========================
+  # --- ROW 2: DOUBLE RINGS ---
   cyan:
     slot: 19
     material: CYAN_DYE
-    name: "&#00FFFF&lCyan Ringo"
-    permissions: ["f0ring.cyan","f0ring.vip","f0ring.svip"]
+    name: "&#00FFFF&lCyan Halo"
+    permissions: ["f0ring.cyan", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#00FFFF"
-
   white:
     slot: 20
     material: WHITE_DYE
-    name: "&#FFFFFF&lWhite Ringo"
-    permissions: ["f0ring.white","f0ring.vip","f0ring.svip"]
+    name: "&#F0F0F0&lPure White"
+    permissions: ["f0ring.white", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#FFFFFF"
-
   black:
     slot: 21
     material: INK_SAC
-    name: "&#444444&lDark Ringo"
-    permissions: ["f0ring.black","f0ring.vip","f0ring.svip"]
+    name: "&#222222&lVoid Ring"
+    permissions: ["f0ring.black", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#111111"
-
   lime:
     slot: 22
     material: LIME_DYE
-    name: "&#32CD32&lLime Ringo"
-    permissions: ["f0ring.lime","f0ring.vip","f0ring.svip"]
+    name: "&#32CD32&lNeon Lime"
+    permissions: ["f0ring.lime", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#32CD32"
-
   magenta:
     slot: 23
     material: MAGENTA_DYE
-    name: "&#FF00FF&lMagenta Ringo"
-    permissions: ["f0ring.magenta","f0ring.vip","f0ring.svip"]
+    name: "&#FF00FF&lMagenta Flash"
+    permissions: ["f0ring.magenta", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#FF00FF"
-
   gold:
     slot: 24
     material: GOLD_INGOT
-    name: "&#FFD700&lGolden Ringo"
-    permissions: ["f0ring.gold","f0ring.vip","f0ring.svip"]
+    name: "&#FFD700&lGolden Legacy"
+    permissions: ["f0ring.gold", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#FFD700"
-
   aqua:
     slot: 25
     material: PRISMARINE_CRYSTALS
-    name: "&#7FFFD4&lAqua Ringo"
-    permissions: ["f0ring.aqua","f0ring.vip","f0ring.svip"]
+    name: "&#7FFFD4&lAqua Mist"
+    permissions: ["f0ring.aqua", "f0ring.svip"]
     type: SOLID
     shape: DOUBLE_RING
     color1: "#7FFFD4"
 
-
-  # =========================
-  # STAR EFFECTS (ROW 3)
-  # =========================
+  # --- ROW 3: DUAL STARS ---
   fire_ice:
     slot: 28
     material: MAGMA_CREAM
-    name: "&#FF4500Fire &f& &#00FFFFIce"
-    permissions: ["f0ring.fireice","f0ring.svip"]
+    name: "&#FF4500Fire &8& &#00FFFFIce"
+    permissions: ["f0ring.fireice", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FF4500"
     color2: "#00FFFF"
-
   light_dark:
     slot: 29
     material: WITHER_SKELETON_SKULL
-    name: "&#FFFFFFLight &7& &#444444Dark"
-    permissions: ["f0ring.lightdark","f0ring.svip"]
+    name: "&fLight &8& &0Darkness"
+    permissions: ["f0ring.lightdark", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FFFFFF"
     color2: "#111111"
-
   toxic:
     slot: 30
     material: SPIDER_EYE
-    name: "&#32CD32Toxic &7& &#8A2BE2Venom"
-    permissions: ["f0ring.toxic","f0ring.svip"]
+    name: "&#32CD32Toxic &8& &#8A2BE2Venom"
+    permissions: ["f0ring.toxic", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#32CD32"
     color2: "#8A2BE2"
-
   watermelon:
     slot: 31
     material: MELON_SLICE
-    name: "&#FF0000Watermelon &#00FF00Fresh"
-    permissions: ["f0ring.watermelon","f0ring.svip"]
+    name: "&#FF0000Water&#00FF00melon"
+    permissions: ["f0ring.watermelon", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FF0000"
     color2: "#00FF00"
-
   bumblebee:
     slot: 32
     material: HONEYCOMB
-    name: "&#FFFF00Bumblebee"
-    permissions: ["f0ring.bumblebee","f0ring.svip"]
+    name: "&#FFFF00Bumble&8bee"
+    permissions: ["f0ring.bumblebee", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FFFF00"
     color2: "#111111"
-
   cotton_candy:
     slot: 33
     material: SUGAR
-    name: "&#FFC0CBCotton &#00FFFFCandy"
-    permissions: ["f0ring.cottoncandy","f0ring.svip"]
+    name: "&#FFC0CB&lCotton &#00FFFF&lCandy"
+    permissions: ["f0ring.cottoncandy", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FFC0CB"
     color2: "#00FFFF"
-
   sunset:
     slot: 34
     material: BLAZE_POWDER
     name: "&#FF4500Sunset &#800080Glow"
-    permissions: ["f0ring.sunset","f0ring.svip"]
+    permissions: ["f0ring.sunset", "f0ring.svip"]
     type: DUAL
     shape: STAR
     color1: "#FF4500"
     color2: "#800080"
 
-
-  # =========================
-  # ANIMATED (ROW 4)
-  # =========================
+  # --- ROW 4: LEGENDARY ---
+  love_aura:
+    slot: 37
+    material: RED_TULIP
+    name: "&#FF1493&lHeartbeat Aura"
+    permissions: ["f0ring.love", "f0ring.sponsor"]
+    type: SOLID
+    shape: HEART
+    color1: "#FF1493"
+  ocean_wave:
+    slot: 38
+    material: HEART_OF_THE_SEA
+    name: "&#0000FF&lDeep Ocean Wave"
+    permissions: ["f0ring.ocean", "f0ring.sponsor"]
+    type: DUAL
+    shape: WAVE
+    color1: "#0000FF"
+    color2: "#00FFFF"
   matrix:
     slot: 39
     material: SLIME_BALL
-    name: "&#00FF00&lMatrix"
-    permissions: ["f0ring.matrix","f0ring.svip","f0ring.sponsor"]
+    name: "&#00FF00&lThe Matrix"
+    permissions: ["f0ring.matrix", "f0ring.sponsor"]
     type: DUAL
     shape: HELIX
     color1: "#00FF00"
     color2: "#003300"
-
   rainbow:
     slot: 40
     material: NETHER_STAR
-    name: "&#FF5555&lR&#FFFF55&la&#55FF55&li&#55FFFF&ln&#FF55FF&lb&#FFFFFF&lo&#FF5555&lw"
-    permissions: ["f0ring.rainbow","f0ring.sponsor"]
+    name: "&x&f&f&5&5&5&5&lR&x&f&f&a&a&5&5&la&x&f&f&f&f&5&5&li&x&5&5&f&f&5&5&ln&x&5&5&f&f&f&f&lb&x&5&5&5&5&f&f&lo&x&a&a&5&5&f&f&lw"
+    permissions: ["f0ring.rainbow", "f0ring.sponsor"]
     type: RAINBOW
     shape: HELIX
-
   poland:
     slot: 41
     material: WHITE_BANNER
-    name: "&#FFFFFFPoland &#FF0000Power!"
-    permissions: ["f0ring.poland","f0ring.svip","f0ring.sponsor"]
+    name: "&fWhite &8& &#FF0000Red Power"
+    permissions: ["f0ring.poland", "f0ring.sponsor"]
     type: DUAL
     shape: HELIX
     color1: "#FFFFFF"
     color2: "#FF0000"
+  mutant_dna:
+    slot: 42
+    material: TWISTING_VINES
+    name: "&#32CD32&lMutant DNA"
+    permissions: ["f0ring.dna", "f0ring.sponsor"]
+    type: DUAL
+    shape: DNA
+    color1: "#32CD32"
+    color2: "#8A2BE2"
+  atomic:
+    slot: 43
+    material: BEACON
+    name: "&#FFFF00&lAtomic Orbitals"
+    permissions: ["f0ring.atomic", "f0ring.sponsor"]
+    type: RAINBOW
+    shape: ORBITALS
